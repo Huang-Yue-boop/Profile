@@ -1,0 +1,638 @@
+app:
+  description: ''
+  icon: 🔄
+  icon_background: '#D1E0FF'
+  mode: workflow
+  name: 'Three-Step Translation Workflow  '
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.5
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: code
+      id: 1711067409646-source-1735204165698-target
+      selected: false
+      source: '1711067409646'
+      sourceHandle: source
+      target: '1735204165698'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: iteration
+      id: 1735204165698-source-1735270761738-target
+      source: '1735204165698'
+      sourceHandle: source
+      target: '1735270761738'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: true
+        iteration_id: '1735270761738'
+        sourceType: iteration-start
+        targetType: llm
+      id: 1735270761738start-source-1735285356210-target
+      source: 1735270761738start
+      sourceHandle: source
+      target: '1735285356210'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735270761738'
+        sourceType: iteration-start
+        targetType: tool
+      id: 1735270761738start-source-1735285460479-target
+      source: 1735270761738start
+      sourceHandle: source
+      target: '1735285460479'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735270761738'
+        sourceType: llm
+        targetType: llm
+      id: 1735285356210-source-1735285527676-target
+      source: '1735285356210'
+      sourceHandle: source
+      target: '1735285527676'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735270761738'
+        sourceType: tool
+        targetType: llm
+      id: 1735285460479-source-1735285527676-target
+      source: '1735285460479'
+      sourceHandle: source
+      target: '1735285527676'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: true
+        iteration_id: '1735270761738'
+        sourceType: llm
+        targetType: code
+      id: 1735285527676-source-1735609651563-target
+      source: '1735285527676'
+      sourceHandle: source
+      target: '1735609651563'
+      targetHandle: target
+      type: custom
+      zIndex: 1002
+    - data:
+        isInIteration: false
+        sourceType: iteration
+        targetType: code
+      id: 1735270761738-source-1735637004324-target
+      source: '1735270761738'
+      sourceHandle: source
+      target: '1735637004324'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: end
+      id: 1735637004324-source-1711068257370-target
+      source: '1735637004324'
+      sourceHandle: source
+      target: '1711068257370'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: code
+        targetType: tool
+      id: 1735637004324-source-1735827121754-target
+      source: '1735637004324'
+      sourceHandle: source
+      target: '1735827121754'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - label: Input Text
+          max_length: null
+          options: []
+          required: true
+          type: paragraph
+          variable: input_text
+      dragging: false
+      height: 111
+      id: '1711067409646'
+      position:
+        x: 334
+        y: 427.1632096752542
+      positionAbsolute:
+        x: 334
+        y: 427.1632096752542
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1735637004324'
+          - result
+          variable: script
+        selected: false
+        title: End
+        type: end
+      height: 111
+      id: '1711068257370'
+      position:
+        x: 1689.1073044905424
+        y: 370.5130758783229
+      positionAbsolute:
+        x: 1689.1073044905424
+        y: 370.5130758783229
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        author: Dify
+        desc: ''
+        height: 120
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 525
+      height: 120
+      id: '1718994930714'
+      position:
+        x: 334
+        y: 108.32836567043674
+      positionAbsolute:
+        x: 334
+        y: 108.32836567043674
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 525
+    - data:
+        code: "import re\n\ndef main(input_text: str) -> dict:\n    return {\"paragraphs\"\
+          : split_and_merge_paragraphs(input_text, 150)}\n\ndef split_and_merge_paragraphs(text,\
+          \ MAX_LENGTH):\n    \"\"\"\n    将输入的英文文章按句子分隔，并根据单词数合并段落，确保每个段落的单词数不超过MAX_LENGTH。\n\
+          \    \n    参数:\n    text (str): 输入的英文文章字符串。\n    MAX_LENGTH (int): 每个段落的最大单词数。\n\
+          \    \n    返回:\n    List[str]: 每个元素是一个段落，段落内的句子用换行符分隔。\n    \"\"\"\n   \
+          \ # 步骤1: 按两个或以上换行符分割成段落\n    paragraphs = re.split(r'\\n{2,}', text)\n \
+          \   \n    # 步骤2: 对每个段落进行分句，并用换行符分隔\n    def split_sentences(paragraph):\n\
+          \        # 改进的正则表达式，匹配 [.!?] 后跟至少一个空白字符，然后是大写字母或换行符\n        modified_paragraph\
+          \ = re.sub(r'([.!?])(?=\\s+[A-Z\\r\\n])', r'\\1\\n', paragraph)\n      \
+          \  sentences = modified_paragraph.split('\\n')\n        return sentences\n\
+          \    \n    # 将每个段落分成句子，并计算单词数\n    paragraphs_sentences = []\n    paragraphs_word_counts\
+          \ = []\n    for para in paragraphs:\n        sentences = split_sentences(para)\n\
+          \        word_count = sum(len(sentence.split()) for sentence in sentences)\n\
+          \        paragraphs_sentences.append(sentences)\n        paragraphs_word_counts.append(word_count)\n\
+          \    \n    # 步骤3: 合并段落，确保每个合并后的段落单词数不超过MAX_LENGTH\n    merged_paragraphs\
+          \ = []\n    i = 0\n    while i < len(paragraphs_sentences):\n        if\
+          \ paragraphs_word_counts[i] > MAX_LENGTH:\n            # 如果段落单词数超过MAX_LENGTH，直接加入结果\n\
+          \            merged_paragraph = '\\n'.join(paragraphs_sentences[i])\n  \
+          \          merged_paragraphs.append(merged_paragraph)\n            i +=\
+          \ 1\n        else:\n            # 尝试合并当前段落与下一个段落，直到单词数超过MAX_LENGTH\n   \
+          \         current_sentences = paragraphs_sentences[i].copy()\n         \
+          \   current_word_count = paragraphs_word_counts[i]\n            j = i +\
+          \ 1\n            while j < len(paragraphs_sentences):\n                if\
+          \ current_word_count + paragraphs_word_counts[j] > MAX_LENGTH:\n       \
+          \             break\n                current_sentences.extend(paragraphs_sentences[j])\n\
+          \                current_word_count += paragraphs_word_counts[j]\n     \
+          \           j += 1\n            # 加入合并后的段落\n            merged_paragraph\
+          \ = '\\n'.join(current_sentences)\n            merged_paragraphs.append(merged_paragraph)\n\
+          \            i = j\n    return merged_paragraphs\n"
+        code_language: python3
+        desc: 将输入的英文文章按句子分隔，并根据单词数合并段落，确保每个段落的单词数不超过MAX_LENGTH。
+        outputs:
+          paragraphs:
+            children: null
+            type: array[string]
+        selected: false
+        title: split_sentences
+        type: code
+        variables:
+        - value_selector:
+          - '1711067409646'
+          - input_text
+          variable: input_text
+      height: 129
+      id: '1735204165698'
+      position:
+        x: 334
+        y: 281
+      positionAbsolute:
+        x: 334
+        y: 281
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        error_handle_mode: terminated
+        height: 397
+        is_parallel: false
+        iterator_selector:
+        - '1735204165698'
+        - paragraphs
+        output_selector:
+        - '1735609651563'
+        - result
+        output_type: array[object]
+        parallel_nums: 10
+        selected: false
+        start_node_id: 1735270761738start
+        title: Iteration
+        type: iteration
+        width: 1002
+      height: 397
+      id: '1735270761738'
+      position:
+        x: 642.5613960969793
+        y: 281
+      positionAbsolute:
+        x: 642.5613960969793
+        y: 281
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 1002
+      zIndex: 1
+    - data:
+        desc: ''
+        isInIteration: true
+        selected: false
+        title: ''
+        type: iteration-start
+      draggable: false
+      height: 60
+      id: 1735270761738start
+      parentId: '1735270761738'
+      position:
+        x: 24
+        y: 68
+      positionAbsolute:
+        x: 666.5613960969793
+        y: 349
+      selectable: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-iteration-start
+      width: 55
+      zIndex: 1002
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1735270761738'
+          - item
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735270761738'
+        model:
+          completion_params:
+            temperature: 1.3
+          mode: chat
+          name: deepseek-chat
+          provider: deepseek
+        prompt_template:
+        - id: 96136bad-3207-4df7-9b31-d34832c0a92f
+          role: system
+          text: '作为一个优秀的英语老师，你面对的是一个英语中等的学生。
+
+
+            <Workflow>
+
+            针对以下英文文章的每一行
+
+            1. 提取出其中的疑难单词、俚语（slang）、名人人名、地名等。
+
+            2. 对句子分模块进行讲解
+
+
+            <Attention>
+
+            1. 输出内容包括：单词、短语以及对应的解释，格式为：
+
+
+            <word/slang>, <中文解释>
+
+            <短语>, <中文解释>
+
+
+            2. 涉及人名，仅对名人进行必要的人物背景介绍；涉及地名，则对其所属区域、位置等进行简短的介绍。
+
+            3. 不要输出原有句子，不需要对整句话进行翻译。'
+        - role: user
+          text: "<Input Text> \n{{#1735270761738.item#}}\n"
+        selected: false
+        title: Word&Slang
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 121
+      id: '1735285356210'
+      parentId: '1735270761738'
+      position:
+        x: 128
+        y: 69.1239463505051
+      positionAbsolute:
+        x: 770.5613960969793
+        y: 350.1239463505051
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735270761738'
+        provider_id: google_translate
+        provider_name: google_translate
+        provider_type: builtin
+        selected: false
+        title: Translate
+        tool_configurations:
+          dest: zh-cn
+        tool_label: Translate
+        tool_name: translate
+        tool_parameters:
+          content:
+            type: mixed
+            value: '{{#1735270761738.item#}}'
+        type: tool
+      height: 111
+      id: '1735285460479'
+      parentId: '1735270761738'
+      position:
+        x: 128
+        y: 206.1239463505051
+      positionAbsolute:
+        x: 770.5613960969793
+        y: 487.1239463505051
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        desc: ''
+        isInIteration: true
+        iteration_id: '1735270761738'
+        model:
+          completion_params:
+            temperature: 1
+          mode: chat
+          name: deepseek-chat
+          provider: deepseek
+        prompt_template:
+        - id: a86dec73-fec8-497a-b152-e1628ed53c24
+          role: system
+          text: "你是一个温柔耐心且专业的英语老师，需要用随和、尽量口语话并且自然的语气给一个英语基础很差的同学讲课。\n\n输入包含英文原文、重点单词和语法、以及谷歌翻译的结果\n\
+            <Workflows>\n从第一行到最后一行，针对原文的每一行，你需要\n1. 首先复述下英语原文\n2. 然后讲解其中的重点单词（短语），并适当扩展单词（短语）的用法\n\
+            3. 结合上下文翻译整句话\n\n<Attention>\n输出是一个包含 sentence、 details_in_CN 和 translation\
+            \ 的 List，如 <output_templete> 的格式\n- sentence：英语原句，不要有任何改动\n- details_in_CN（中文讲解部分）\n\
+            \   -  要用随和、口语化的语气表达，善用：嗯、呢、纳、啊、吧、呀等语气词，别过度使用；\n   -  对于简单句子，则跳过讲解部分\n\
+            - translation（完整翻译部分）要符合英文的表达顺序。\n\n<output_templete>\n[\n{\n    \"sentence\"\
+            : xxx,\n    \"details_in_CN\": \"xxx\", // \n    \"translation\": \"xxx\"\
+            \n},\n{\n    \"sentence\": xxx\n    \"details_in_CN\": \"xxx\", // \n\
+            \    \"translation\": \"xxx\"\n}, ...\n]"
+        - id: 84e2f90d-9691-435a-87de-b802c4d4a0ae
+          role: user
+          text: '<英文原文>
+
+            {{#1735270761738.item#}}
+
+            <重点单词和语法>
+
+            {{#1735285356210.text#}}
+
+            <谷歌翻译>
+
+            {{#1735285460479.text#}}'
+        selected: false
+        title: Teach
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 121
+      id: '1735285527676'
+      parentId: '1735270761738'
+      position:
+        x: 427.20119009879295
+        y: 69.12562210048367
+      positionAbsolute:
+        x: 1069.7625861957722
+        y: 350.12562210048367
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "import json\n\ndef main(item: str, text: str, translate_text: str)\
+          \ -> dict:\n    \"\"\"\n    Constructs a list of dictionaries where each\
+          \ dictionary contains:\n    - 'sentence': A sentence from the input `item`.\n\
+          \    - 'details_in_CN': A placeholder for detailed information in Chinese.\n\
+          \    - 'translation': Corresponding translation from the input `text`.\n\
+          \n    Args:\n        item (str): A string containing sentences separated\
+          \ by newlines.\n        text (str): A JSON string containing a list of translations\
+          \ corresponding to each sentence.\n\n    Returns:\n        dict: A dictionary\
+          \ with a key \"result\" containing the structured list of sentence details.\n\
+          \    \"\"\"\n    # Parse the JSON string into a list of translations\n \
+          \   translations = json.loads(text)\n    \n    return {\n        \"result\"\
+          : {\n            \"details\": translations,\n            \"paragraph\":\
+          \ item,\n            \"translation\": translate_text\n        }\n    }"
+        code_language: python3
+        desc: Constructs a list of dictionaries where each dictionary contains
+        isInIteration: true
+        iteration_id: '1735270761738'
+        outputs:
+          result:
+            children: null
+            type: object
+        selected: false
+        title: OUTPUT_JSON
+        type: code
+        variables:
+        - value_selector:
+          - '1735285527676'
+          - text
+          variable: text
+        - value_selector:
+          - '1735270761738'
+          - item
+          variable: item
+        - value_selector:
+          - '1735285460479'
+          - text
+          variable: translate_text
+      height: 113
+      id: '1735609651563'
+      parentId: '1735270761738'
+      position:
+        x: 731.201190098793
+        y: 67.91598593996576
+      positionAbsolute:
+        x: 1373.7625861957722
+        y: 348.91598593996576
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+      zIndex: 1002
+    - data:
+        code: "\ndef main(iter_output: list) -> dict:\n    results = []\n    for i\
+          \ in iter_output:\n        for d in i['details']:\n            results.append(\n\
+          \                \"\\n\".join([\"下一句：\" + d['sentence'],\n             \
+          \   d['details_in_CN'],\n                # d['translation'],\n         \
+          \       \"再听一遍：\" + d['sentence']])\n            )\n        \n    return\
+          \ {\n        \"result\": \"\\n---\\n\".join(results),\n    }\n"
+        code_language: python3
+        desc: ''
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: TO_TTS
+        type: code
+        variables:
+        - value_selector:
+          - '1735270761738'
+          - output
+          variable: iter_output
+      height: 66
+      id: '1735637004324'
+      position:
+        x: 1689.1073044905424
+        y: 281
+      positionAbsolute:
+        x: 1689.1073044905424
+        y: 281
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    - data:
+        desc: ''
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: Text To Speech
+        tool_configurations:
+          model: openai#tts-1-hd
+          voice#openai#tts-1: echo
+          voice#openai#tts-1-hd: echo
+        tool_label: Text To Speech
+        tool_name: tts
+        tool_parameters:
+          text:
+            type: mixed
+            value: '{{#1735637004324.result#}}'
+        type: tool
+      height: 176
+      id: '1735827121754'
+      position:
+        x: 1689.1073044905424
+        y: 497.87532548744105
+      positionAbsolute:
+        x: 1689.1073044905424
+        y: 497.87532548744105
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 244
+    viewport:
+      x: -539.1221097126645
+      y: -23.746937993624385
+      zoom: 0.8108049643362625
